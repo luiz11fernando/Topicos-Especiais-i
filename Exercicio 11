@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabela Dinâmica</title>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+</head>
+<body>
+
+<h2>Tabela Dinâmica</h2>
+
+<table id="tabela">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>País</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Aqui serão adicionadas as linhas dinamicamente -->
+  </tbody>
+</table>
+
+<script>
+  // Dados para a tabela
+  const dados = [
+    { nome: 'João', idade: 25, país: 'Brasil' },
+    { nome: 'Maria', idade: 30, país: 'EUA' },
+    { nome: 'Carlos', idade: 40, país: 'Portugal' }
+  ];
+
+  // Função para criar a tabela dinâmica
+  function criarTabela() {
+    const tabela = document.getElementById('tabela');
+    const tbody = tabela.querySelector('tbody');
+
+    // Limpa o corpo da tabela
+    tbody.innerHTML = '';
+
+    // Adiciona cada linha da tabela
+    dados.forEach((item) => {
+      const row = tbody.insertRow();
+      Object.values(item).forEach((value) => {
+        const cell = row.insertCell();
+        const text = document.createTextNode(value);
+        cell.appendChild(text);
+      });
+    });
+  }
+
+  // Chama a função para criar a tabela inicialmente
+  criarTabela();
+</script>
+
+</body>
+</html>
